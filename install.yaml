@@ -4,6 +4,7 @@
   connection: local
   remote_user: root
   vars:
+    VERSION_STRING: "5:24.0.0-1~ubuntu.22.04~jammy"
     kernel_modules:
       - br_netfilter
       - ip6_udp_tunnel
@@ -138,9 +139,9 @@
         repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
         state: present
 
-    - name: Install Docker
+    - name: Install Docker with specific version
       apt:
-        name: docker-ce
+        name: docker-ce={{ VERSION_STRING }} docker-ce-cli={{ VERSION_STRING }} containerd.io docker-buildx-plugin docker-compose-plugin
         state: present
 
     - name: Start Docker service
