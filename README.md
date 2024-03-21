@@ -15,11 +15,10 @@ ansible --version
 ufw status
 ```
 
-# 3. Clone repo 
+# 3. Clone repo & jalankan script install rancher
 
 ```
 git clone https://github.com/anakdevops/rancher-single-node.git
 cd rancher-single-node
+ansible-playbook step-install-rancher.yml
 ```
-
-
