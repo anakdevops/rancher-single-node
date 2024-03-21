@@ -1,5 +1,5 @@
 ---
-- name: Install rancher
+- name: Install rancher dengan user serverdevops
   hosts: localhost
   connection: local
   remote_user: root
@@ -71,37 +71,37 @@
 
     - name: Add RKE admin user
       user:
-        name: anakdevops
+        name: serverdevops
         shell: /bin/bash
      
     - name: Create sudo file
       file:
-        path: /etc/sudoers.d/anakdevops
+        path: /etc/sudoers.d/serverdevops
         state: touch
     
     - name: Give rke user passwordless sudo
       lineinfile:
-        path: /etc/sudoers.d/anakdevops
+        path: /etc/sudoers.d/serverdevops
         state: present
-        line: 'anakdevops ALL=(ALL:ALL) NOPASSWD: ALL'
+        line: 'serverdevops ALL=(ALL:ALL) NOPASSWD: ALL'
     
-    - name: Create a 2048-bit SSH key for user jsmith in ~anakdevops/.ssh/id_rsa
+    - name: Create a 2048-bit SSH key for user jsmith in ~serverdevops/.ssh/id_rsa
       ansible.builtin.user:
-        name: anakdevops
+        name: serverdevops
         generate_ssh_key: yes
         ssh_key_bits: 2048
         ssh_key_file: .ssh/id_rsa
 
     - name: Fix owner of the generated pub key
       file:
-        path: /home/anakdevops/.ssh/id_rsa.pub
-        owner: anakdevops
-        group: anakdevops
+        path: /home/serverdevops/.ssh/id_rsa.pub
+        owner: serverdevops
+        group: serverdevops
 
     - name: Copy SSH key to authorized_keys
       authorized_key:
-        user: anakdevops
-        key: "{{ lookup('file', '/home/mediumady/.ssh/id_rsa.pub') }}"
+        user: serverdevops
+        key: "{{ lookup('file', '/home/serverdevops/.ssh/id_rsa.pub') }}"
         state: present
   
     - name: Load kernel modules for RKE
@@ -151,8 +151,8 @@
 
     - name: add user Docker
       shell: |
-        sudo usermod -aG docker anakdevops
-        id anakdevops
+        sudo usermod -aG docker serverdevops
+        id serverdevops
         sudo systemctl start docker
     
     - name: Install docker-compose
@@ -171,12 +171,12 @@
 
     - name: Create cluster.yml
       blockinfile:
-        path: /home/anakdevops/cluster.yml
+        path: /home/serverdevops/cluster.yml
         create: yes
         block: |
           nodes:
             - address: 192.168.0.208
-              user: anakdevops
+              user: serverdevops
               role:
                 - controlplane
                 - etcd
@@ -187,9 +187,9 @@
                 canal_flannel_backend_type: vxlan
     - name: Set owner and group for cluster.yml
       file:
-        path: /home/anakdevops/cluster.yml
-        owner: anakdevops
-        group: anakdevops
+        path: /home/serverdevops/cluster.yml
+        owner: serverdevops
+        group: serverdevops
         mode: '0644'
     
     - name: disable UFW
