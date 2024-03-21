@@ -31,7 +31,7 @@ akan memakan waktu lama, setelah selesai pastikan restart server
 # 3. pastikan kubectl, rke, helm sudah terinstall
 
 ```
-kubectl --version
+kubectl version --client
 rke --version
-helm --version
+helm version
 ```
