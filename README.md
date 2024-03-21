@@ -20,5 +20,10 @@ ufw status
 ```
 git clone https://github.com/anakdevops/rancher-single-node.git
 cd rancher-single-node
+```
+## pastikan username dan IP sudah sesuai
+contoh disini memakai IP 192.168.0.208 dan user anakdevops
+
+```
 ansible-playbook install.yaml
 ```
