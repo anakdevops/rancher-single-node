@@ -48,6 +48,9 @@ cd /home/serverdevops/
 rke up --config cluster.yml
 ```
 
+tunggu sampai muncul { Finished building Kubernetes cluster successfully }
+
+
 # 4. export KUBECONFIG dan cek nodes
 
 ```
