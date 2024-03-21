@@ -50,3 +50,17 @@ rke up --config cluster.yml
 export KUBECONFIG=$HOME/kube_config_cluster.yml
 kubectl get nodes
 ```
+
+# 5. Deploy UI Rancher
+
+```
+helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
+kubectl create namespace cattle-system
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.13.2/cert-manager.crds.yaml
+helm repo add jetstack https://charts.jetstack.io
+helm repo update
+helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.13.2
+helm install rancher rancher-latest/rancher --namespace cattle-system --set hostname=rancher.tes.localorg
+kubectl -n cattle-system get deploy rancher
+kubectl scale --replicas=1 deployment rancher -n cattle-system
+```
