@@ -49,7 +49,7 @@
         chmod +x rke_linux-amd64
         sudo mv rke_linux-amd64 /usr/local/bin/rke
         rke --version
-    - name: insatll helm
+    - name: install helm
       shell: |
         curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
         chmod 700 get_helm.sh
@@ -71,36 +71,36 @@
 
     - name: Add RKE admin user
       user:
-        name: mediumady
+        name: anakdevops
         shell: /bin/bash
      
     - name: Create sudo file
       file:
-        path: /etc/sudoers.d/mediumady
+        path: /etc/sudoers.d/anakdevops
         state: touch
     
     - name: Give rke user passwordless sudo
       lineinfile:
-        path: /etc/sudoers.d/mediumady
+        path: /etc/sudoers.d/anakdevops
         state: present
-        line: 'mediumady ALL=(ALL:ALL) NOPASSWD: ALL'
+        line: 'anakdevops ALL=(ALL:ALL) NOPASSWD: ALL'
     
-    - name: Create a 2048-bit SSH key for user jsmith in ~mediumady/.ssh/id_rsa
+    - name: Create a 2048-bit SSH key for user jsmith in ~anakdevops/.ssh/id_rsa
       ansible.builtin.user:
-        name: mediumady
+        name: anakdevops
         generate_ssh_key: yes
         ssh_key_bits: 2048
         ssh_key_file: .ssh/id_rsa
 
     - name: Fix owner of the generated pub key
       file:
-        path: /home/mediumady/.ssh/id_rsa.pub
-        owner: mediumady
-        group: mediumady
+        path: /home/anakdevops/.ssh/id_rsa.pub
+        owner: anakdevops
+        group: anakdevops
 
     - name: Copy SSH key to authorized_keys
       authorized_key:
-        user: mediumady
+        user: anakdevops
         key: "{{ lookup('file', '/home/mediumady/.ssh/id_rsa.pub') }}"
         state: present
   
@@ -151,8 +151,8 @@
 
     - name: add user Docker
       shell: |
-        sudo usermod -aG docker mediumady
-        id mediumady
+        sudo usermod -aG docker anakdevops
+        id anakdevops
         sudo systemctl start docker
     
     - name: Install docker-compose
@@ -171,12 +171,12 @@
 
     - name: Create cluster.yml
       blockinfile:
-        path: /home/mediumady/cluster.yml
+        path: /home/anakdevops/cluster.yml
         create: yes
         block: |
           nodes:
-            - address: 192.168.0.212
-              user: mediumady
+            - address: 192.168.0.208
+              user: anakdevops
               role:
                 - controlplane
                 - etcd
@@ -187,9 +187,9 @@
                 canal_flannel_backend_type: vxlan
     - name: Set owner and group for cluster.yml
       file:
-        path: /home/mediumady/cluster.yml
-        owner: mediumady
-        group: mediumady
+        path: /home/anakdevops/cluster.yml
+        owner: anakdevops
+        group: anakdevops
         mode: '0644'
     
     - name: disable UFW
