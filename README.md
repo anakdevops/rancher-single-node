@@ -1,5 +1,5 @@
 ```
-git clone
+git clone https://github.com/anakdevops/rancher-single-node.git
 cd rancher-single-node
 ```
 
