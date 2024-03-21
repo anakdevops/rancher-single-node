@@ -1,3 +1,10 @@
+```
+git clone
+cd rancher-single-node
+```
+
+
+
 # 1. Update, Upgrade ubuntu, Install ansible & git
 
 ```
