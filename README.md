@@ -8,10 +8,11 @@ sudo apt update && sudo apt -y full-upgrade && apt install ansible git -y
 akan memakan waktu lama, setelah selesai pastikan restart server
 
 
-# 2. Pengecekan versi ansible
+# 2. Pengecekan versi ansible dan pastikan firewall inactive
 
 ```
 ansible --version
+ufw status
 ```
 
 # 3. Clone repo 
