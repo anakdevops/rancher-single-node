@@ -21,7 +21,7 @@ ufw status
 git clone https://github.com/anakdevops/rancher-single-node.git
 cd rancher-single-node
 ```
-## pastikan username dan IP sudah sesuai
+## pastikan username dan IP sudah sesuai didalam file install.yaml
 contoh disini memakai IP 192.168.0.208 dan user anakdevops
 
 ```
