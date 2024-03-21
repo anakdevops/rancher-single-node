@@ -43,3 +43,10 @@ su serverdevops
 cd /home/serverdevops/
 rke up --config cluster.yml
 ```
+
+# 4. export KUBECONFIG dan cek nodes
+
+```
+export KUBECONFIG=$HOME/kube_config_cluster.yml
+kubectl get nodes
+```
