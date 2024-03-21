@@ -5,17 +5,15 @@
 sudo apt update && sudo apt -y full-upgrade && apt install ansible git -y
 ```
 
-akan memakan waktu lama, setelah selesai pastikan restart server
+akan memakan waktu lama, setelah selesai pastikan restart server kemudian cek versi ansible dan pastikan firewall inactive
 
-
-# 2. Pengecekan versi ansible dan pastikan firewall inactive
 
 ```
 ansible --version
 ufw status
 ```
 
-# 3. Clone repo & jalankan script install rancher
+# 2. Clone repo & jalankan script install rancher
 
 ```
 git clone https://github.com/anakdevops/rancher-single-node.git
@@ -30,7 +28,7 @@ ansible-playbook install.yaml
 akan memakan waktu lama, setelah selesai pastikan restart server
 
 
-# 4. pastikan kubectl, rke, helm sudah terinstall
+# 3. pastikan kubectl, rke, helm sudah terinstall
 
 ```
 kubectl --version
