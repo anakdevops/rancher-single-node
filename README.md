@@ -28,10 +28,18 @@ ansible-playbook install.yaml
 akan memakan waktu lama, setelah selesai pastikan restart server
 
 
-# 3. pastikan kubectl, rke, helm sudah terinstall
+# 3. pastikan kubectl, rke, helm sudah terinstall dan lakukan create cluster
 
 ```
 kubectl version --client
 rke --version
 helm version
+```
+## create cluster
+
+```
+sudo su
+su serverdevops
+cd /home/serverdevops/
+rke up --config cluster.yml
 ```
