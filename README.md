@@ -20,5 +20,5 @@ ufw status
 ```
 git clone https://github.com/anakdevops/rancher-single-node.git
 cd rancher-single-node
-ansible-playbook step-install-rancher.yml
+ansible-playbook install.yaml
 ```
