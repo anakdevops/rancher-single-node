@@ -1,9 +1,3 @@
-```
-git clone https://github.com/anakdevops/rancher-single-node.git
-cd rancher-single-node
-```
-
-
 
 # 1. Update, Upgrade ubuntu, Install ansible & git
 
@@ -19,4 +13,12 @@ akan memakan waktu lama, setelah selesai pastikan restart server
 ```
 ansible --version
 ```
+
+# 3. Clone repo 
+
+```
+git clone https://github.com/anakdevops/rancher-single-node.git
+cd rancher-single-node
+```
+
 
