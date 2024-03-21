@@ -140,9 +140,7 @@
         state: present
 
     - name: Install Docker with specific version
-      apt:
-        name: docker-ce={{ VERSION_STRING }} docker-ce-cli={{ VERSION_STRING }} containerd.io docker-buildx-plugin docker-compose-plugin
-        state: present
+      ashell: apt install docker-ce={{ VERSION_STRING }} docker-ce-cli={{ VERSION_STRING }} containerd.io docker-buildx-plugin docker-compose-plugin -y
 
     - name: Start Docker service
       service:
