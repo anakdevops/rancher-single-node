@@ -27,3 +27,13 @@ contoh disini memakai IP 192.168.0.208 dan user anakdevops
 ```
 ansible-playbook install.yaml
 ```
+akan memakan waktu lama, setelah selesai pastikan restart server
+
+
+# 4. pastikan kubectl, rke, helm sudah terinstall
+
+```
+kubectl --version
+rke --version
+helm --version
+```
