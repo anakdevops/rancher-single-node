@@ -8,7 +8,7 @@
 sudo apt update && sudo apt -y full-upgrade && apt install ansible git curl -y
 ```
 
-akan memakan waktu lama, setelah selesai pastikan restart server kemudian cek versi ansible dan pastikan firewall inactive
+akan memakan waktu lama, setelah selesai kemudian cek versi ansible dan pastikan firewall inactive
 
 
 ```
@@ -28,7 +28,7 @@ contoh disini memakai IP 192.168.0.208 dan user serverdevops
 ```
 ansible-playbook install.yaml
 ```
-akan memakan waktu lama, setelah selesai pastikan restart server
+akan memakan waktu lama, setelah selesai lakukan pengecekan versi
 
 
 # 3. pastikan kubectl, rke, helm sudah terinstall dan docker versi 24
