@@ -5,7 +5,7 @@
 # 1. Update, Upgrade ubuntu, Install ansible, curl & git
 
 ```
-sudo apt update && sudo apt -y full-upgrade && apt install ansible git curl -y
+sudo apt update && apt install ansible git curl -y
 ```
 
 akan memakan waktu lama, setelah selesai kemudian cek versi ansible dan pastikan firewall inactive
